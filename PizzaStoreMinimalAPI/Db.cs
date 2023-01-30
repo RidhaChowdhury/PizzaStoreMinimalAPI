@@ -10,6 +10,9 @@ public record Pizza
 // The actual database of pizza's
 public class PizzaDB
 {
+    public static string test() {
+        return "test";
+    }
     // The pizzas are stored in a list
     private static List<Pizza> _pizzas = new List<Pizza>()
     {
@@ -20,6 +23,7 @@ public class PizzaDB
 
     // Returns the list of pizzas
     public static List<Pizza> GetPizzas() {
+        System.Diagnostics.Debug.WriteLine(_pizzas.Count);
         return _pizzas;
     }
 
