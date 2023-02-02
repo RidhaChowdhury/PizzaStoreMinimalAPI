@@ -1,7 +1,8 @@
 namespace PizzaStore.DB;
 
 // A prototype for what a pizza looks like
-public record Pizza
+
+public record OldPizza
 {
     public int Id { get; set; }
     public string? Name { get; set; }
@@ -14,32 +15,32 @@ public class PizzaDB
         return "test";
     }
     // The pizzas are stored in a list
-    private static List<Pizza> _pizzas = new List<Pizza>()
+    private static List<OldPizza> _pizzas = new List<OldPizza>()
     {
-     new Pizza{ Id=1, Name="Montemagno, Pizza shaped like a great mountain" },
-     new Pizza{ Id=2, Name="The Galloway, Pizza shaped like a submarine, silent but deadly"},
-     new Pizza{ Id=3, Name="The Noring, Pizza shaped like a Viking helmet, where's the mead"}
+     new OldPizza{ Id=1, Name="Montemagno, Pizza shaped like a great mountain" },
+     new OldPizza{ Id=2, Name="The Galloway, Pizza shaped like a submarine, silent but deadly"},
+     new OldPizza{ Id=3, Name="The Noring, Pizza shaped like a Viking helmet, where's the mead"}
    };
 
     // Returns the list of pizzas
-    public static List<Pizza> GetPizzas() {
+    public static List<OldPizza> GetPizzas() {
         System.Diagnostics.Debug.WriteLine(_pizzas.Count);
         return _pizzas;
     }
 
     // Get a specific pizza
-    public static Pizza? GetPizza(int id) {
+    public static OldPizza? GetPizza(int id) {
         return _pizzas.SingleOrDefault(pizza => pizza.Id == id);
     }
 
     // Add a new pizza to the db
-    public static Pizza CreatePizza(Pizza pizza) {
+    public static OldPizza CreatePizza(OldPizza pizza) {
         _pizzas.Add(pizza);
         return pizza;
     }
 
     // Update a specific pizza
-    public static Pizza UpdatePizza(Pizza update) {
+    public static OldPizza UpdatePizza(OldPizza update) {
         _pizzas = _pizzas.Select(pizza =>
         {
             if (pizza.Id == update.Id) {
